@@ -21,6 +21,7 @@ import { CustomAnthropic } from '@/llm/anthropic';
 import { ChatOpenRouter } from '@/llm/openrouter';
 import { ChatVertexAI } from '@/llm/vertexai';
 import { Providers } from '@/common';
+import { ChatLiteLLM } from './litellm';
 
 export const llmProviders: Partial<ChatModelConstructorMap> = {
   [Providers.XAI]: ChatXAI,
@@ -37,6 +38,7 @@ export const llmProviders: Partial<ChatModelConstructorMap> = {
   [Providers.BEDROCK]: ChatBedrockConverse,
   // [Providers.ANTHROPIC]: ChatAnthropic,
   [Providers.GOOGLE]: CustomChatGoogleGenerativeAI,
+  [Providers.LITELLM]: ChatLiteLLM,
 };
 
 export const manualToolStreamProviders = new Set<Providers | string>([

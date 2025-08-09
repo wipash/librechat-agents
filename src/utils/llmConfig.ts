@@ -1,6 +1,7 @@
 // src/utils/llmConfig.ts
 import { Providers } from '@/common';
 import type * as or from '@/llm/openrouter';
+import type * as litellm from '@/llm/litellm';
 import type * as t from '@/types';
 
 export const llmConfigs: Record<string, t.LLMConfig | undefined> = {
@@ -43,6 +44,16 @@ export const llmConfigs: Record<string, t.LLMConfig | undefined> = {
     },
     include_reasoning: true,
   } as or.ChatOpenRouterCallOptions & t.LLMConfig,
+  [Providers.LITELLM]: {
+    provider: Providers.LITELLM,
+    streaming: true,
+    streamUsage: true,
+    model: 'openai/gpt-4.1',
+    openAIApiKey: process.env.LITELLM_API_KEY,
+    configuration: {
+      baseURL: process.env.LITELLM_BASE_URL,
+    },
+  } as litellm.ChatLiteLLMCallOptions & t.LLMConfig,
   [Providers.AZURE]: {
     provider: Providers.AZURE,
     temperature: 0.7,

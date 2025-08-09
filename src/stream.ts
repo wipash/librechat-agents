@@ -88,7 +88,9 @@ export function getChunkContent({
   reasoningKey: 'reasoning_content' | 'reasoning';
 }): string | t.MessageContentComplex[] | undefined {
   if (
-    (provider === Providers.OPENAI || provider === Providers.AZURE) &&
+    (provider === Providers.OPENAI ||
+      provider === Providers.AZURE ||
+      provider === Providers.LITELLM) &&
     (
       chunk?.additional_kwargs?.reasoning as
         | Partial<ChatOpenAIReasoningSummary>
@@ -332,7 +334,9 @@ hasToolCallChunks: ${hasToolCallChunks}
     ) {
       reasoning_content = 'valid';
     } else if (
-      (provider === Providers.OPENAI || provider === Providers.AZURE) &&
+      (provider === Providers.OPENAI ||
+        provider === Providers.AZURE ||
+        provider === Providers.LITELLM) &&
       reasoning_content != null &&
       typeof reasoning_content !== 'string' &&
       reasoning_content.summary?.[0]?.text != null &&

@@ -39,6 +39,7 @@ import { CustomChatGoogleGenerativeAI } from '@/llm/google';
 import { ChatOpenRouter } from '@/llm/openrouter';
 import { ChatVertexAI } from '@/llm/vertexai';
 import { Providers } from '@/common';
+import { ChatLiteLLM, ChatLiteLLMCallOptions } from '@/llm/litellm';
 
 export type AzureClientOptions = Partial<OpenAIChatInput> &
   Partial<AzureOpenAIInput> & {
@@ -111,6 +112,7 @@ export type ProviderOptionsMap = {
   [Providers.BEDROCK_LEGACY]: BedrockClientOptions;
   [Providers.BEDROCK]: BedrockConverseClientOptions;
   [Providers.XAI]: XAIClientOptions;
+  [Providers.LITELLM]: ChatLiteLLMCallOptions;
 };
 
 export type ChatModelMap = {
@@ -127,6 +129,7 @@ export type ChatModelMap = {
   [Providers.BEDROCK_LEGACY]: BedrockChat;
   [Providers.BEDROCK]: ChatBedrockConverse;
   [Providers.GOOGLE]: CustomChatGoogleGenerativeAI;
+  [Providers.LITELLM]: ChatLiteLLM;
 };
 
 export type ChatModelConstructorMap = {
